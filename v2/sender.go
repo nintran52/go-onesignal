@@ -8,7 +8,7 @@ import (
 	"github.com/OneSignal/onesignal-go-api/v2"
 )
 
-func SenderV2(appID, appKey, userID string) {
+func SenderV2(appID, appKey, userID, androidChannelID string) {
 	// Initialize the OneSignal client
 	apiClient := onesignal.NewAPIClient(onesignal.NewConfiguration())
 
@@ -22,6 +22,7 @@ func SenderV2(appID, appKey, userID string) {
 	notification.SetContents(onesignal.StringMap{En: &message})
 
 	notification.SetTargetChannel("push")
+	notification.SetAndroidChannelId(androidChannelID)
 	notification.AdditionalProperties = map[string]interface{}{"include_aliases": map[string]interface{}{"external_id": []string{userID}}}
 
 	// Send the notification

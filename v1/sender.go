@@ -8,7 +8,7 @@ import (
 	"github.com/OneSignal/onesignal-go-api/v2"
 )
 
-func SenderV1(appID, userID string) {
+func SenderV1(appID, subscriptionID string) {
 	// Initialize the OneSignal client
 	apiClient := onesignal.NewAPIClient(onesignal.NewConfiguration())
 
@@ -21,7 +21,7 @@ func SenderV1(appID, userID string) {
 	notification.SetHeadings(onesignal.StringMap{En: &title})
 	notification.SetContents(onesignal.StringMap{En: &message})
 
-	ids := []string{userID}
+	ids := []string{subscriptionID}
 	notification.SetIncludePlayerIds(ids)
 
 	// Send the notification
