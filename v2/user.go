@@ -8,7 +8,7 @@ import (
 	"github.com/OneSignal/onesignal-go-api/v2"
 )
 
-func CreateUser(appID, appKey, userID string) {
+func CreateUser(appID, appKey, userID, subscriptionID string) {
 	// Initialize the OneSignal client
 	apiClient := onesignal.NewAPIClient(onesignal.NewConfiguration())
 
@@ -21,6 +21,7 @@ func CreateUser(appID, appKey, userID string) {
 	// Define the user subscription
 	subscriptions := []onesignal.SubscriptionObject{}
 	subscription := onesignal.NewSubscriptionObject()
+	subscription.SetId(subscriptionID)
 	subscription.SetType("iOSPush")
 	subscriptions = append(subscriptions, *subscription)
 

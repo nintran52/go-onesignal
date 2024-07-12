@@ -5,7 +5,6 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
-	v1 "github.com/nintran52/onesignal-v2/v1"
 	v2 "github.com/nintran52/onesignal-v2/v2"
 )
 
@@ -18,10 +17,9 @@ func main() {
 	appId := os.Getenv("APP_ID")
 	appKey := os.Getenv("APP_KEY")
 	userID := os.Getenv("USER_ID")
-	subscriptionID := os.Getenv("SUBSCRIPTION_ID")
 
-	v1.SenderV1(appId, subscriptionID)
-	v2.CreateUser(appId, appKey, userID)
-	v2.CreateSubscription(appId, appKey, userID)
+	// v1.SenderV1(appId, subscriptionID)
+	// v2.CreateSubscription(appId, appKey, userID)
+	v2.CreateUser(appId, appKey, userID, os.Getenv("SUBSCRIPTION_ID"))
 	v2.SenderV2(appId, appKey, userID)
 }
